@@ -43,8 +43,5 @@ output "assumable_role_admin_policy" {
 }
 
 output "assumable_role_additional_policy" {
-  value = [
-    for policy in aws_iam_role_policy_attachment.assumable_role_additional :
-    policy.policy_arn
-  ]
+  value = element(concat(aws_iam_role_policy_attachment.assumable_role_additional.*.policy_arn, [""]), 0)
 }

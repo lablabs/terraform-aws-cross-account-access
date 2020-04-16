@@ -55,14 +55,10 @@ resource "aws_iam_role" "assumable_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "assumable_role_additional" {
-  for_each = toset([
-    for policy in var.assumable_additional_role_policy_arns :
-    policy
-    if local.assumable_role_create
-  ])
+  count = local.assumable_role_create ? length(var.assumable_additional_role_policy_arns) : 0
 
   role       = aws_iam_role.assumable_role[0].name
-  policy_arn = each.value
+  policy_arn = var.assumable_additional_role_policy_arns[count.index]
 }
 
 resource "aws_iam_role_policy_attachment" "assumable_role_admin" {
