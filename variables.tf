@@ -33,9 +33,9 @@ variable "group_account_role" {
   type        = map(any)
   default     = {}
 
-  # Expected value for the `group_account_role` is a map of then account name and assumed role. 
+  # Expected value for the `group_account_role` is a map of then account name and assumed role.
   # The map key is the name of the account and the value is role arn to be assumed by the group.
-  # For each account will be created group with assume role policy. 
+  # For each account will be created group with assume role policy.
   #
   # Example:
   #
@@ -45,7 +45,7 @@ variable "group_account_role" {
   #
   # Creates:
   #   - group named ${namespace}-${environment}-${group_name_prefix}-${account}-${group_name_suffix}
-  #   - policy with assumable role where resource will be arn:aws:iam::ACCOUNT_ID:role/ROLE_NAME 
+  #   - policy with assumable role where resource will be arn:aws:iam::ACCOUNT_ID:role/ROLE_NAME
   #   - group policy attachment
 
 }
@@ -83,7 +83,6 @@ variable "assumable_role_mfa" {
 variable "assumable_role_permissions_boundary_arn" {
   description = "Permissions boundary ARN to use for IAM role"
   type        = string
-  default     = ""
 }
 
 variable "assumable_role_trusted_arns" {
