@@ -83,6 +83,7 @@ variable "assumable_role_mfa" {
 variable "assumable_role_permissions_boundary_arn" {
   description = "Permissions boundary ARN to use for IAM role"
   type        = string
+  default     = ""
 }
 
 variable "assumable_role_trusted_arns" {
